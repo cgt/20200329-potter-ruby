@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe 'Sale' do
   PRICE_OF_BOOK = 8
 
@@ -53,7 +54,8 @@ RSpec.describe 'Sale' do
   end
 
   it 'how does group by work?' do
-    expect([:first_book]).to eq [:first_book]
+    expect(%i[first_book first_book].group_by { |x| x })
+        .to eq({ first_book: %i[first_book first_book] })
   end
 end
 
