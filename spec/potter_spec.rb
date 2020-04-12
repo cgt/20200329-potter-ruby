@@ -14,6 +14,15 @@ RSpec.describe 'Sale' do
       expect(sale.total).to eq 8
     end
   end
+
+  context 'with two copies of the same book' do
+    it 'has total 16' do
+      sale = Sale.new
+      sale.add :first_book
+      sale.add :first_book
+      expect(sale.total).to eq 16
+    end
+  end
 end
 
 class Sale
@@ -29,7 +38,7 @@ class Sale
     if @items.empty?
       0
     else
-      8
+      8 * @items.size
     end
   end
 end
