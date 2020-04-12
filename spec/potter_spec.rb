@@ -59,7 +59,7 @@ RSpec.describe 'Sale' do
                      .map { |item_name, copies| [item_name, copies.size] }
                      .to_h
 
-    expect(copies_of_each).to eq ({ first_book: 2, second_book: 1 })
+    expect(copies_of_each).to eq({ first_book: 2, second_book: 1 })
   end
 end
 
