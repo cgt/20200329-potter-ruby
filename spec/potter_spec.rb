@@ -32,6 +32,16 @@ RSpec.describe 'Sale' do
       expect(sale.total).to eq 16 * 0.95
     end
   end
+
+  xcontext 'with three different books' do
+    it 'has a 10 % discount' do
+      sale = Sale.new
+      sale.add :first_book
+      sale.add :second_book
+      sale.add :third_book
+      expect(sale.total).to eq 24 * 0.90
+    end
+  end
 end
 
 class Sale
