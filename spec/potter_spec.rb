@@ -44,6 +44,14 @@ RSpec.describe 'Sale' do
       expect(sale.total).to eq 3 * PRICE_OF_BOOK * 0.90
     end
   end
+
+  context 'fiddling with Ruby collections' do
+    it 'group by' do
+      x = %i[first_book first_book second_book]
+          .group_by(&:itself)
+      expect(x).to eq({first_book: %i[first_book first_book], second_book: %i[second_book]})
+    end
+  end
 end
 
 class Sale
