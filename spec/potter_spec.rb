@@ -54,8 +54,8 @@ RSpec.describe 'Sale' do
   end
 
   it 'how does group by work?' do
-    expect(%i[first_book first_book].group_by { |x| x })
-      .to eq({ first_book: %i[first_book first_book] })
+    expect(%i[first_book first_book second_book].group_by { |x| x })
+      .to eq({ first_book: %i[first_book first_book], second_book: %i[second_book] })
   end
 end
 
