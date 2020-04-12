@@ -4,6 +4,12 @@ RSpec.describe 'Sale' do
 
   let(:sale) { Sale.new }
 
+  xit 'acceptance test' do
+    sale.add :first_book, :second_book, :third_book, :fourth_book
+    sale.add :first_book, :second_book, :third_book, :fifth_book
+    expect(sale.total).to eq 51.20
+  end
+
   context 'with no items' do
     it 'has total 0' do
       expect(sale.total).to eq 0
