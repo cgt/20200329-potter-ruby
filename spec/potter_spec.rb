@@ -49,8 +49,8 @@ class Sale
     @items = []
   end
 
-  def add(item)
-    @items << item
+  def add(*items)
+    @items << items[0]
   end
 
   def total
