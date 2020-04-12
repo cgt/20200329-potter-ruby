@@ -44,23 +44,6 @@ RSpec.describe 'Sale' do
       expect(sale.total).to eq 3 * PRICE_OF_BOOK * 0.90
     end
   end
-
-  context 'with two copies of the first book and two copies of the second book' do
-    xit 'gets a 5 % discount on each set' do
-      sale.add :first_book, :second_book
-      sale.add :first_book, :second_book
-      expect(sale.total).to eq (2 * PRICE_OF_BOOK * 0.95) * 2
-    end
-  end
-
-  it 'group into sets' do
-    copies_of_each = %i[first_book first_book second_book]
-                     .group_by { |x| x }
-                     .map { |item_name, copies| [item_name, copies.size] }
-                     .to_h
-
-    expect(copies_of_each).to eq({ first_book: 2, second_book: 1 })
-  end
 end
 
 class Sale
