@@ -36,7 +36,7 @@ class Sale
 
   def total
     if @items.empty?
-      0
+      8 * @items.size
     else
       8 * @items.size
     end
