@@ -55,7 +55,9 @@ class Sale
 
   def total
     total = 8 * @items.size
-    total *= 0.95 if eligible_for_5_percent_discount?
+    if eligible_for_5_percent_discount?
+      total *= 0.95
+    end
     total
   end
 
