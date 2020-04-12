@@ -53,7 +53,7 @@ RSpec.describe 'Sale' do
     end
   end
 
-  it 'how does group by work?' do
+  it 'group into sets' do
     a = %i[first_book first_book second_book]
         .group_by { |x| x }
         .map { |item_name, copies| [item_name, copies.size] }
