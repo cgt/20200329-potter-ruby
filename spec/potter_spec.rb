@@ -45,7 +45,7 @@ class Sale
 
   def total
     total = 8 * @items.size
-    total *= 0.95 if @items.size > 1 and @items.uniq.size == @items.size
+    total *= 0.95 if (@items.size > 1) && (@items.uniq.size == @items.size)
     total
   end
 end
