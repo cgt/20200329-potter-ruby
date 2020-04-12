@@ -48,7 +48,7 @@ RSpec.describe 'Sale' do
   context 'fiddling with Ruby collections' do
     it 'group by' do
       x = %i[first_book first_book second_book]
-          .group_by(&:itself)
+        .group_by(&:itself)
       expect(x).to eq({
         first_book: %i[first_book first_book],
         second_book: %i[second_book]
