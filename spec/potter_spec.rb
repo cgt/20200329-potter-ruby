@@ -50,7 +50,7 @@ class Sale
   end
 
   def add(*items)
-    @items << items[0]
+    @items.concat items
   end
 
   def total
