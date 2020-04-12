@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 RSpec.describe 'Sale' do
+  let(:sale) { Sale.new }
   context 'with no items' do
     it 'has total 0' do
-      sale = Sale.new
       expect(sale.total).to eq 0
     end
   end
 
   context 'with one book' do
     it 'has total 8' do
-      sale = Sale.new
       sale.add :first_book
       expect(sale.total).to eq 8
     end
@@ -17,7 +16,6 @@ RSpec.describe 'Sale' do
 
   context 'with two copies of the same book' do
     it 'has total 16' do
-      sale = Sale.new
       sale.add :first_book, :first_book
       expect(sale.total).to eq 16
     end
@@ -25,7 +23,6 @@ RSpec.describe 'Sale' do
 
   context 'with two different books' do
     it 'has a 5 % discount' do
-      sale = Sale.new
       sale.add :first_book
       sale.add :second_book
       expect(sale.total).to eq 16 * 0.95
@@ -34,7 +31,6 @@ RSpec.describe 'Sale' do
 
   context 'with three different books' do
     it 'has a 10 % discount' do
-      sale = Sale.new
       sale.add :first_book, :second_book, :third_book
       expect(sale.total).to eq 24 * 0.90
     end
