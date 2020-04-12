@@ -54,11 +54,12 @@ RSpec.describe 'Sale' do
   end
 
   it 'group into sets' do
-    a = %i[first_book first_book second_book]
-        .group_by { |x| x }
-        .map { |item_name, copies| [item_name, copies.size] }
+    copies_of_each = %i[first_book first_book second_book]
+                     .group_by { |x| x }
+                     .map { |item_name, copies| [item_name, copies.size] }
+                     .to_h
 
-    expect(a).to eq [[:first_book, 2], [:second_book, 1]]
+    expect(copies_of_each).to eq ({ first_book: 2, second_book: 1 })
   end
 end
 
