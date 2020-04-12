@@ -33,7 +33,7 @@ RSpec.describe 'Sale' do
     end
   end
 
-  xcontext 'with three different books' do
+  context 'with three different books' do
     it 'has a 10 % discount' do
       sale = Sale.new
       sale.add :first_book
@@ -55,13 +55,19 @@ class Sale
 
   def total
     total = 8 * @items.size
-    if eligible_for_5_percent_discount?
+    if eligible_for_10_percent_discount?
+      total *= 0.90
+    elsif eligible_for_5_percent_discount?
       total *= 0.95
     end
     total
   end
 
   private
+
+  def eligible_for_10_percent_discount?
+    (@items.size > 2) && (@items.uniq.size == @items.size)
+  end
 
   def eligible_for_5_percent_discount?
     (@items.size > 1) && (@items.uniq.size == @items.size)
