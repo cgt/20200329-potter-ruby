@@ -6,10 +6,30 @@ RSpec.describe 'Sale' do
       expect(empty_sale.total).to eq 0
     end
   end
+
+  context 'with one book' do
+    it 'has total 8' do
+      sale = Sale.new
+      sale.add :first_book
+      expect(sale.total).to eq 8
+    end
+  end
 end
 
 class Sale
+  def initialize
+    @items = []
+  end
+
+  def add(item)
+    @items << item
+  end
+
   def total
-    0
+    if @items.empty?
+      0
+    else
+      8
+    end
   end
 end
