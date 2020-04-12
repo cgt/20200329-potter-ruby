@@ -23,6 +23,15 @@ RSpec.describe 'Sale' do
       expect(sale.total).to eq 16
     end
   end
+
+  context 'with two different books' do
+    it 'has a 5 % discount' do
+      sale = Sale.new
+      sale.add :first_book
+      sale.add :second_book
+      expect(sale.total).to eq 16 * 0.95
+    end
+  end
 end
 
 class Sale
@@ -35,6 +44,8 @@ class Sale
   end
 
   def total
-    8 * @items.size
+    total = 8 * @items.size
+    total *= 0.95 if @items.size > 1 and @items.uniq.size == @items.size
+    total
   end
 end
