@@ -23,8 +23,7 @@ RSpec.describe 'Sale' do
 
   context 'with two different books' do
     it 'has a 5 % discount' do
-      sale.add :first_book
-      sale.add :second_book
+      sale.add :first_book, :second_book
       expect(sale.total).to eq 16 * 0.95
     end
   end
