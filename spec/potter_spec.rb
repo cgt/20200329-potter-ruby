@@ -2,8 +2,8 @@
 RSpec.describe 'Sale' do
   context 'with no items' do
     it 'has total 0' do
-      emptySale = Sale.new
-      expect(emptySale.total).to eq 0
+      empty_sale = Sale.new
+      expect(empty_sale.total).to eq 0
     end
   end
 end
