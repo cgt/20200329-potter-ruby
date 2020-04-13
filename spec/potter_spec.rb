@@ -63,7 +63,7 @@ RSpec.describe "Sale" do
   context "with one set of five books" do
     it "has 25 % discount" do
       sale.add :first_book, :second_book, :third_book, :fourth_book, :fifth_book
-      expect(sale.total).to eq 5 * PRICE_OF_BOOK * 0.80 # wrong discount
+      expect(sale.total).to eq 5 * PRICE_OF_BOOK * 0.75
     end
   end
 end
@@ -82,7 +82,9 @@ class Sale
       .map(&method(:without_nil_elements))
       .map { |set|
         total = 8 * set.size
-        if eligible_for_20_percent_discount? set
+        if eligible_for_25_percent_discount? set
+          total *= 0.75
+        elsif eligible_for_20_percent_discount? set
           total *= 0.80
         elsif eligible_for_10_percent_discount? set
           total *= 0.90
@@ -106,6 +108,10 @@ class Sale
       .group_by(&:itself)
       .values
     sets[0].zip(*sets[1..-1])
+  end
+
+  def eligible_for_25_percent_discount?(set)
+    set.size >= 5
   end
 
   def eligible_for_20_percent_discount?(set)
