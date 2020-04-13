@@ -49,7 +49,7 @@ RSpec.describe "Sale" do
     it "has a 5 % discount on the set of two and no discount on the set of one" do
       sale.add :first_book, :second_book
       sale.add :first_book
-      expect(sale.total2).to eq((2 * PRICE_OF_BOOK * 0.95) + 1 * PRICE_OF_BOOK)
+      expect(sale.total).to eq((2 * PRICE_OF_BOOK * 0.95) + 1 * PRICE_OF_BOOK)
     end
   end
 
@@ -88,10 +88,6 @@ class Sale
       total
     end
     sets.inject(0) { |total, set_price| total + set_price }
-  end
-
-  def total2
-    total
   end
 
   private
