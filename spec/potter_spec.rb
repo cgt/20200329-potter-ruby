@@ -76,6 +76,12 @@ RSpec.describe "Sale" do
         [:first_book, :second_book, :third_book, nil, nil]
       ])
     end
+
+    it "balance sets" do
+      sale.add :first_book, :second_book, :third_book, :fourth_book
+      sale.add :first_book, :second_book, :third_book, :fifth_book
+      sets = sale.items_as_sets
+    end
   end
 end
 
