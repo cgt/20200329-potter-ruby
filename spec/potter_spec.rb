@@ -116,14 +116,17 @@ class Sale
       .map { |set|
         total = 8 * set.size
         if eligible_for_25_percent_discount? set
-          total *= 0.75
+          discount = 0.75
         elsif eligible_for_20_percent_discount? set
-          total *= 0.80
+          discount = 0.80
         elsif eligible_for_10_percent_discount? set
-          total *= 0.90
+          discount = 0.90
         elsif eligible_for_5_percent_discount? set
-          total *= 0.95
+          discount = 0.95
+        else
+          discount = 1.00
         end
+        total *= discount
         total
       }
       .inject(0) { |total, set_price| total + set_price }
