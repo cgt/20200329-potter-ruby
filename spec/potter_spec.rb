@@ -91,7 +91,7 @@ class Sale
     sets.map! do |set|
       set = set.select { |x| x }
       total = 8 * set.size
-      if (set.size > 2) && (set.uniq.size == set.size)
+      if eligible_for_10_percent_discount? set
         total *= 0.90
       elsif (set.size > 1) && (set.uniq.size == set.size)
         total *= 0.95
