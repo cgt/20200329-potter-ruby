@@ -115,17 +115,7 @@ class Sale
     sets
       .map { |set|
         total = 8 * set.size
-        discount = if eligible_for_25_percent_discount? set
-          0.75
-        elsif eligible_for_20_percent_discount? set
-          0.80
-        elsif eligible_for_10_percent_discount? set
-          0.90
-        elsif eligible_for_5_percent_discount? set
-          0.95
-        else
-          1.00
-        end
+        discount = set_discount(set)
         total *= discount
         total
       }
@@ -159,5 +149,21 @@ class Sale
 
   def eligible_for_5_percent_discount?(set)
     set.size >= 2
+  end
+
+  private
+
+  def set_discount(set)
+    if eligible_for_25_percent_discount? set
+      0.75
+    elsif eligible_for_20_percent_discount? set
+      0.80
+    elsif eligible_for_10_percent_discount? set
+      0.90
+    elsif eligible_for_5_percent_discount? set
+      0.95
+    else
+      1.00
+    end
   end
 end
