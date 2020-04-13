@@ -124,7 +124,6 @@ class Sale
   end
 
   def items_as_sets
-    return [] if @items.empty?
     sets = @items
       .group_by(&:itself)
       .values
