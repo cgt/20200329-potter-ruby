@@ -76,6 +76,7 @@ class Sale
   end
 
   def total
+    return total2
     total = 8 * @items.size
     if eligible_for_10_percent_discount?
       total *= 0.90
@@ -103,6 +104,7 @@ class Sale
   private
 
   def group_items_into_sets
+    return [] if @items.empty?
     sets = @items
       .group_by(&:itself)
       .values
