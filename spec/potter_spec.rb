@@ -76,7 +76,7 @@ class Sale
   end
 
   def total
-    return total2
+    total2
   end
 
   def total2
