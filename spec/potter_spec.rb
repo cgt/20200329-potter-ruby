@@ -73,7 +73,7 @@ RSpec.describe "Sale" do
       sale.add :first_book, :second_book, :third_book, :fifth_book
       expect(sale.items_as_sets).to eq([
         [:first_book, :second_book, :third_book, :fourth_book, :fifth_book],
-        [:first_book, :second_book, :third_book, nil, nil]
+        [:first_book, :second_book, :third_book]
       ])
     end
 
@@ -128,10 +128,7 @@ class Sale
   end
 
   def items_as_sets
-    sets = @items
-      .group_by(&:itself)
-      .values
-    sets[0].zip(*sets[1..-1])
+    items_as_sets_without_nil
   end
 
   def eligible_for_25_percent_discount?(set)
