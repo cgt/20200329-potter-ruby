@@ -78,7 +78,7 @@ class Sale
   def total
     return total2
     total = 8 * @items.size
-    if eligible_for_10_percent_discount?
+    if eligible_for_10_percent_discount?(@items)
       total *= 0.90
     elsif eligible_for_5_percent_discount?
       total *= 0.95
@@ -111,8 +111,8 @@ class Sale
     sets[0].zip(*sets[1..-1])
   end
 
-  def eligible_for_10_percent_discount?
-    (@items.size > 2) && (@items.uniq.size == @items.size)
+  def eligible_for_10_percent_discount?(items)
+    (items.size > 2) && (items.uniq.size == items.size)
   end
 
   def eligible_for_5_percent_discount?
