@@ -86,10 +86,7 @@ class Sale
   end
 
   def total2
-    sets = @items
-      .group_by(&:itself)
-      .values
-    sets = sets[0].zip(*sets[1..-1])
+    sets = group_items_into_sets
     sets.map! do |set|
       set = set.select { |x| x }
       total = 8 * set.size
@@ -104,6 +101,13 @@ class Sale
   end
 
   private
+
+  def group_items_into_sets
+    sets = @items
+               .group_by(&:itself)
+               .values
+    sets = sets[0].zip(*sets[1..-1])
+  end
 
   def eligible_for_10_percent_discount?
     (@items.size > 2) && (@items.uniq.size == @items.size)
