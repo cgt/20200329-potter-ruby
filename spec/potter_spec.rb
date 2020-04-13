@@ -47,7 +47,9 @@ RSpec.describe "Sale" do
 
   context "with one set of two books and one set of one book" do
     it "has a 5 % discount on the set of two and no discount on the set of one" do
-
+      sale.add :first_book, :second_book
+      sale.add :first_book
+      expect(sale.total2).to eq((2 * PRICE_OF_BOOK * 0.95) + 1 * PRICE_OF_BOOK)
     end
   end
 
@@ -81,6 +83,25 @@ class Sale
       total *= 0.95
     end
     total
+  end
+
+  def total2
+    sets = @items
+      .group_by(&:itself)
+      .values
+    sets = sets[0].zip(*sets[1..-1])
+    sets.map! do |set|
+      set = set.select { |x| x }
+      total = 8 * set.size
+      if (set.size > 2) && (set.uniq.size == set.size)
+        total *= 0.90
+      elsif (set.size > 1) && (set.uniq.size == set.size)
+        total *= 0.95
+      end
+      puts "#{set} total is #{total}"
+      total
+    end
+    sets.inject(0) { |total, set_price| total + set_price }
   end
 
   private
