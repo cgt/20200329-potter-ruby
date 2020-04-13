@@ -87,7 +87,7 @@ class Sale
   end
 
   def total2
-    sets = group_items_into_sets
+    sets = items_as_sets
     sets.map! do |set|
       set = set.select { |x| x }
       total = 8 * set.size
@@ -103,7 +103,7 @@ class Sale
 
   private
 
-  def group_items_into_sets
+  def items_as_sets
     return [] if @items.empty?
     sets = @items
       .group_by(&:itself)
