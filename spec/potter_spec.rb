@@ -93,7 +93,7 @@ class Sale
       total = 8 * set.size
       if eligible_for_10_percent_discount? set
         total *= 0.90
-      elsif (set.size > 1) && (set.uniq.size == set.size)
+      elsif eligible_for_5_percent_discount? set
         total *= 0.95
       end
       total
