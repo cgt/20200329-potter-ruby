@@ -65,6 +65,7 @@ class Sale
 
   def total
     sets = items_as_sets
+      .map { |set| set.select { |x| x } }
       .map { |set|
         set = set.select { |x| x }
         total = 8 * set.size
