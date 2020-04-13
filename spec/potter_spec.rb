@@ -67,13 +67,15 @@ RSpec.describe "Sale" do
     end
   end
 
-  it "groups the basket of items from the acceptance test into a set of five and a set of three" do
-    sale.add :first_book, :second_book, :third_book, :fourth_book
-    sale.add :first_book, :second_book, :third_book, :fifth_book
-    expect(sale.items_as_sets).to eq([
-      [:first_book, :second_book, :third_book, :fourth_book, :fifth_book],
-      [:first_book, :second_book, :third_book, nil, nil]
-    ])
+  context "learning tests" do
+    it "groups the basket of items from the acceptance test into a set of five and a set of three" do
+      sale.add :first_book, :second_book, :third_book, :fourth_book
+      sale.add :first_book, :second_book, :third_book, :fifth_book
+      expect(sale.items_as_sets).to eq([
+        [:first_book, :second_book, :third_book, :fourth_book, :fifth_book],
+        [:first_book, :second_book, :third_book, nil, nil]
+      ])
+    end
   end
 end
 
