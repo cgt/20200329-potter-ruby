@@ -98,7 +98,6 @@ class Sale
       elsif (set.size > 1) && (set.uniq.size == set.size)
         total *= 0.95
       end
-      puts "#{set} total is #{total}"
       total
     end
     sets.inject(0) { |total, set_price| total + set_price }
