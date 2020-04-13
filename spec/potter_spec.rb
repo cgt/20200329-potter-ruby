@@ -91,6 +91,8 @@ RSpec.describe "Sale" do
       sets_hi_to_lo = sets_by_size.keys.sort.reverse
       most = sets_by_size[sets_hi_to_lo[0]][0]
       expect(most.size).to eq 5
+      fewest = sets_by_size[sets_hi_to_lo[-1]][0]
+      expect(fewest.size).to eq 3
     end
   end
 end
