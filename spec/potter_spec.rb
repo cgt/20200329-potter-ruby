@@ -106,7 +106,7 @@ class Sale
     sets = @items
       .group_by(&:itself)
       .values
-    sets = sets[0].zip(*sets[1..-1])
+    sets[0].zip(*sets[1..-1])
   end
 
   def eligible_for_10_percent_discount?
