@@ -65,7 +65,7 @@ class Sale
 
   def total
     sets = items_as_sets
-      .map { |set| set.select { |x| x } }
+      .map(&method(:without_nil_elements))
       .map { |set|
         total = 8 * set.size
         if eligible_for_10_percent_discount? set
@@ -79,6 +79,10 @@ class Sale
   end
 
   private
+
+  def without_nil_elements(set)
+    set.select { |x| x }
+  end
 
   def items_as_sets
     return [] if @items.empty?
