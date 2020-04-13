@@ -93,6 +93,10 @@ RSpec.describe "Sale" do
       expect(most.size).to eq 5
       fewest = sets_by_size[sets_hi_to_lo[-1]][0]
       expect(fewest.size).to eq 3
+
+      fewest << most.pop
+      expect(most.size).to eq 4
+      expect(fewest.size).to eq 4
     end
   end
 end
