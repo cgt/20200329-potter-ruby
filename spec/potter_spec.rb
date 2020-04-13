@@ -101,15 +101,15 @@ class Sale
     sets[0].zip(*sets[1..-1])
   end
 
-  def eligible_for_20_percent_discount?(items)
-    items.size >= 4
+  def eligible_for_20_percent_discount?(set)
+    set.size >= 4
   end
 
-  def eligible_for_10_percent_discount?(items)
-    items.size >= 3
+  def eligible_for_10_percent_discount?(set)
+    set.size >= 3
   end
 
-  def eligible_for_5_percent_discount?(items)
-    items.size >= 2
+  def eligible_for_5_percent_discount?(set)
+    set.size >= 2
   end
 end
