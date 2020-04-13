@@ -130,6 +130,20 @@ class Sale
     items_as_sets_value.map(&method(:without_nil_elements))
   end
 
+  def set_discount(set)
+    if eligible_for_25_percent_discount? set
+      0.75
+    elsif eligible_for_20_percent_discount? set
+      0.80
+    elsif eligible_for_10_percent_discount? set
+      0.90
+    elsif eligible_for_5_percent_discount? set
+      0.95
+    else
+      1.00
+    end
+  end
+
   def eligible_for_25_percent_discount?(set)
     set.size >= 5
   end
@@ -148,19 +162,5 @@ class Sale
 
   def set_total(set)
     8 * set.size * set_discount(set)
-  end
-
-  def set_discount(set)
-    if eligible_for_25_percent_discount? set
-      0.75
-    elsif eligible_for_20_percent_discount? set
-      0.80
-    elsif eligible_for_10_percent_discount? set
-      0.90
-    elsif eligible_for_5_percent_discount? set
-      0.95
-    else
-      1.00
-    end
   end
 end
