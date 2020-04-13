@@ -163,5 +163,4 @@ class Sale
   def eligible_for_5_percent_discount?(set)
     set.size >= 2
   end
-
 end
