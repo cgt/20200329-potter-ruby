@@ -146,8 +146,6 @@ class Sale
     set.size >= 2
   end
 
-  private
-
   def set_total(set)
     8 * set.size * set_discount(set)
   end
