@@ -102,14 +102,14 @@ class Sale
   end
 
   def eligible_for_20_percent_discount?(items)
-    items.size > 3
+    items.size >= 4
   end
 
   def eligible_for_10_percent_discount?(items)
-    items.size > 2
+    items.size >= 3
   end
 
   def eligible_for_5_percent_discount?(items)
-    items.size > 1
+    items.size >= 2
   end
 end
