@@ -71,7 +71,7 @@ RSpec.describe "Sale" do
     it "groups the basket of items from the acceptance test into a set of five and a set of three" do
       sale.add :first_book, :second_book, :third_book, :fourth_book
       sale.add :first_book, :second_book, :third_book, :fifth_book
-      expect(sale.items_as_sets_without_nil).to eq([
+      expect(sale.items_as_sets).to eq([
         [:first_book, :second_book, :third_book, :fourth_book, :fifth_book],
         [:first_book, :second_book, :third_book]
       ])
@@ -80,7 +80,7 @@ RSpec.describe "Sale" do
     xit "balance sets" do
       sale.add :first_book, :second_book, :third_book, :fourth_book
       sale.add :first_book, :second_book, :third_book, :fifth_book
-      sets_by_size = sale.items_as_sets_without_nil.group_by { |set| set.size }
+      sets_by_size = sale.items_as_sets.group_by { |set| set.size }
       expect(sets_by_size).to be_nil
     end
   end
@@ -96,7 +96,7 @@ class Sale
   end
 
   def total
-    sets = items_as_sets_without_nil
+    sets = items_as_sets
     sets
       .map { |set|
         total = 8 * set.size
@@ -118,7 +118,7 @@ class Sale
     items.select { |x| x }
   end
 
-  def items_as_sets_without_nil
+  def items_as_sets
     return [] if @items.empty?
     sets = @items
       .group_by(&:itself)
