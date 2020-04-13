@@ -80,8 +80,8 @@ class Sale
 
   private
 
-  def without_nil_elements(set)
-    set.select { |x| x }
+  def without_nil_elements(items)
+    items.select { |x| x }
   end
 
   def items_as_sets
