@@ -106,7 +106,7 @@ class Sale
   end
 
   def eligible_for_10_percent_discount?(items)
-    (items.size > 2) && (items.uniq.size == items.size)
+    (items.size > 2) && (true)
   end
 
   def eligible_for_5_percent_discount?(items)
