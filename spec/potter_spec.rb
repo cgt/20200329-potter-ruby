@@ -77,13 +77,6 @@ class Sale
 
   def total
     return total2
-    total = 8 * @items.size
-    if eligible_for_10_percent_discount?(@items)
-      total *= 0.90
-    elsif eligible_for_5_percent_discount?(@items)
-      total *= 0.95
-    end
-    total
   end
 
   def total2
