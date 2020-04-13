@@ -65,7 +65,7 @@ class Sale
 
   def total
     sets = items_as_sets
-    sets.map! do |set|
+    sets = sets.map do |set|
       set = set.select { |x| x }
       total = 8 * set.size
       if eligible_for_10_percent_discount? set
