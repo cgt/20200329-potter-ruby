@@ -51,6 +51,9 @@ RSpec.describe "Sale" do
         .group_by(&:itself)
         .values
       expect(x).to eq [%i[first_book first_book], %i[second_book]]
+
+      x = x[0].zip(*x[1..-1])
+      expect(x).to eq [[:first_book, :second_book], [:first_book, nil]]
     end
   end
 end
