@@ -104,8 +104,8 @@ class Sale
 
   def group_items_into_sets
     sets = @items
-               .group_by(&:itself)
-               .values
+      .group_by(&:itself)
+      .values
     sets = sets[0].zip(*sets[1..-1])
   end
 
