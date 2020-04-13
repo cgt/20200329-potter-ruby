@@ -86,6 +86,8 @@ RSpec.describe "Sale" do
         5 => [[:first_book, :second_book, :third_book, :fourth_book, :fifth_book]],
         3 => [[:first_book, :second_book, :third_book]]
       })
+
+      expect(sets_by_size.size).to eq 2
     end
   end
 end
