@@ -96,7 +96,7 @@ class Sale
   end
 
   def total
-    sets = items_as_sets.map(&method(:without_nil_elements))
+    sets = items_as_sets_without_nil
     sets
       .map { |set|
         total = 8 * set.size
@@ -116,6 +116,10 @@ class Sale
 
   def without_nil_elements(items)
     items.select { |x| x }
+  end
+
+  def items_as_sets_without_nil
+    items_as_sets.map(&method(:without_nil_elements))
   end
 
   def items_as_sets
