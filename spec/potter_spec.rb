@@ -77,10 +77,11 @@ RSpec.describe "Sale" do
       ])
     end
 
-    it "balance sets" do
+    xit "balance sets" do
       sale.add :first_book, :second_book, :third_book, :fourth_book
       sale.add :first_book, :second_book, :third_book, :fifth_book
-      sets = sale.items_as_sets
+      sets_by_size = sale.items_as_sets.group_by { |set| set.size }
+      expect(sets_by_size).to be_nil
     end
   end
 end
