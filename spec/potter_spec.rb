@@ -115,8 +115,7 @@ class Sale
     sets
       .map { |set|
         total = 8 * set.size
-        total *= set_discount(set)
-        total
+        total * set_discount(set)
       }
       .inject(0) { |total, set_price| total + set_price }
   end
