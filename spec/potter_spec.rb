@@ -124,7 +124,11 @@ class Sale
   def items_as_sets
     return [] if @items.empty?
     sets = @items.group_by(&:itself).values
-    sets[0].zip(*sets[1..-1]).map(&method(:without_nil_elements))
+    transpose(sets).map(&method(:without_nil_elements))
+  end
+
+  def transpose(sets)
+    sets[0].zip(*sets[1..-1])
   end
 
   def set_total(set)
