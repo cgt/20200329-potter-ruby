@@ -64,16 +64,17 @@ class Sale
   end
 
   def total
-    sets = items_as_sets.map do |set|
-      set = set.select { |x| x }
-      total = 8 * set.size
-      if eligible_for_10_percent_discount? set
-        total *= 0.90
-      elsif eligible_for_5_percent_discount? set
-        total *= 0.95
+    sets = items_as_sets
+      .map do |set|
+        set = set.select { |x| x }
+        total = 8 * set.size
+        if eligible_for_10_percent_discount? set
+          total *= 0.90
+        elsif eligible_for_5_percent_discount? set
+          total *= 0.95
+        end
+        total
       end
-      total
-    end
     sets.inject(0) { |total, set_price| total + set_price }
   end
 
