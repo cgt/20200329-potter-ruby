@@ -88,6 +88,9 @@ RSpec.describe "Sale" do
       })
 
       expect(sets_by_size.size).to eq 2
+      sets_hi_to_lo = sets_by_size.keys.sort.reverse
+      most = sets_by_size[sets_hi_to_lo[0]][0]
+      expect(most.size).to eq 5
     end
   end
 end
