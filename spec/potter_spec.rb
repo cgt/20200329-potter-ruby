@@ -45,6 +45,12 @@ RSpec.describe "Sale" do
     end
   end
 
+  context "with one set of two books and one set of one book" do
+    it "has a 5 % discount on the set of two and no discount on the set of one" do
+
+    end
+  end
+
   context "fiddling with Ruby collections" do
     it "group by" do
       x = %i[first_book first_book second_book]
