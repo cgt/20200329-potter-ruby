@@ -96,8 +96,6 @@ class Sale
       .inject(0) { |total, set_price| total + set_price }
   end
 
-  private
-
   def without_nil_elements(items)
     items.select { |x| x }
   end
