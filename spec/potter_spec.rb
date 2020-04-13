@@ -119,6 +119,7 @@ class Sale
   end
 
   def items_as_sets_without_nil
+    return [] if @items.empty?
     items_as_sets.map(&method(:without_nil_elements))
   end
 
