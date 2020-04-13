@@ -113,9 +113,7 @@ class Sale
   def total
     sets = items_as_sets
     sets
-      .map { |set|
-        8 * set.size * set_discount(set)
-      }
+      .map(&method(:set_total))
       .inject(0) { |total, set_price| total + set_price }
   end
 
@@ -149,6 +147,10 @@ class Sale
   end
 
   private
+
+  def set_total(set)
+    8 * set.size * set_discount(set)
+  end
 
   def set_discount(set)
     if eligible_for_25_percent_discount? set
