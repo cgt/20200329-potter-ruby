@@ -52,18 +52,6 @@ RSpec.describe "Sale" do
       expect(sale.total).to eq((2 * PRICE_OF_BOOK * 0.95) + 1 * PRICE_OF_BOOK)
     end
   end
-
-  context "fiddling with Ruby collections" do
-    it "group by" do
-      x = %i[first_book first_book second_book]
-        .group_by(&:itself)
-        .values
-      expect(x).to eq [%i[first_book first_book], %i[second_book]]
-
-      x = x[0].zip(*x[1..-1])
-      expect(x).to eq [[:first_book, :second_book], [:first_book, nil]]
-    end
-  end
 end
 
 class Sale
